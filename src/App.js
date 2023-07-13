@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from 'react'
+import './App.scss'
+import { BrowserRouter as Router, Route, Routes, Switch }from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Home from './components/Home'
+import MovieDetail from './components/MovieDetail'
+import PageNotFound from './components/PageNotFound'
 function App() {
+   
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      
+        <Router>
+           <Header/>
+           <div className='container'>
+           <Routes>
+            <Route path='/' Component = {Home}/>
+            <Route path='/movie/:imdbID' Component = {MovieDetail}/>
+            <Route path= "*" Component = {PageNotFound}/>
+            </Routes>
+            </div>
+           <Footer/>
+        </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+//  Header  Router Footer 
+//   Home  MovieDetail Error
